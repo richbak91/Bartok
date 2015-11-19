@@ -1,0 +1,31 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq; 
+
+
+public enum PlayerType {
+	human,
+	ai
+}
+// The individual player of the game
+
+[System.Serializable] 
+public class Player {
+	public PlayerType type = PlayerType.ai;
+	public int playerNum;
+	public List<CardBartok> hand; // The cards in this player's hand
+	public SlotDef handSlotDef;
+	// Add a card to the hand
+	public CardBartok AddCard(CardBartok eCB) {
+		if (hand == null) hand = new List<CardBartok>();
+		// Add the card to the hand
+		hand.Add (eCB);
+		return( eCB );
+	}
+	// Remove a card from the hand
+	public CardBartok RemoveCard(CardBartok cb) {
+		hand.Remove(cb);
+		return(cb);
+	}
+}
